@@ -6,13 +6,23 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^25.1.0",
+    "@types/node": "^13.5.1",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "classnames": "^2.2.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "tailwindcss": "^1.1.4",
+    "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run start:tw & react-scripts start",
+    "start:tw": "postcss ./src/styles/index.tailwind.css -o ./src/index.css",
+    "start:tw-watch": "postcss ./src/index.tailwind.css -o ./src/index.css --watch",
+    "build": "npm run build:tw && react-scripts build",
+    "build:tw": "postcss ./src/styles/index.tailwind.css -o ./src/index.css --env production",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -30,5 +40,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.0.5",
+    "@types/classnames": "^2.2.9",
+    "autoprefixer": "^9.7.4",
+    "postcss-cli": "^7.1.0",
+    "postcss-import": "^12.0.1"
   }
 }
